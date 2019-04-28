@@ -25,7 +25,7 @@
 #define snprintf _snprintf
 #endif
 
-int verbose = 0;
+int verbose = 1;
 
 static void print_endpoint_comp(const struct libusb_ss_endpoint_companion_descriptor *ep_comp)
 {
@@ -229,7 +229,7 @@ static int print_device(libusb_device *dev, int level)
 			struct libusb_config_descriptor *config;
 			ret = libusb_get_config_descriptor(dev, i, &config);
 			if (LIBUSB_SUCCESS != ret) {
-				printf("  Couldn't retrieve descriptors\n");
+				printf("  Couldn't retrieve descriptors:%d\n", ret);
 				continue;
 			}
 
